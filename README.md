@@ -13,8 +13,8 @@ Features:
 How to setup:
 1. Clone the repo
 2. npm install
-3. In the .env.development file change DATABASE_URL username and password
-4. npm run db-migrate db:create test_backend
+3. Initiate a test database in postgres
+4. In the .env.development file change DATABASE_URL username, password and set database name
 5. npm run db-migrate up
 6. npm run start:dev
 
