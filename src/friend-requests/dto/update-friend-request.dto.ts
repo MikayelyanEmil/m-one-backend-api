@@ -1,8 +1,9 @@
-import { IsUUID } from "class-validator";
+import { IsBoolean, IsUUID } from "class-validator";
 
 export class UpdateFriendRequestDto {
     @IsUUID()
     friendRequestId: string;
 
+    @IsBoolean()
     accept: boolean;
 }
