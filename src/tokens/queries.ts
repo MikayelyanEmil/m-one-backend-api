@@ -1,0 +1,1 @@
+export const CREATE_TOKEN = 'INSERT INTO "Token" ("userId", "refreshToken") VALUES ($1, $2) RETURNING *';
