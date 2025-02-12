@@ -1,1 +1,2 @@
 export const CREATE_USER = 'INSERT INTO "User" ("firstName", "lastName", age, email, password) VALUES ($1, $2, $3, $4, $5) RETURNING *';
+export const FIND_USER_BY_EMAIL = 'SELECT * FROM "User" WHERE "email" = $1 LIMIT 1;';
