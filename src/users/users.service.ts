@@ -3,6 +3,7 @@ import { PgClientService } from '../pg-client.service';
 import { User } from './interfaces/create-user-response';
 import { CreateUserDto } from './dto/create-user.dto';
 import { CREATE_USER, FIND_USER_BY_EMAIL } from './queries';
+import * as bcrypt from 'bcrypt'
 
 @Injectable()
 export class UsersService {
@@ -17,7 +18,7 @@ export class UsersService {
             password
         } = createUserDto;
         const response = await this.pgClient.query(CREATE_USER,
-            [firstName, lastName, age, email, password]
+            [firstName, lastName, age, email, bcrypt.hashSync(password, 10)]
         );
         return response.rows[0];
     }
