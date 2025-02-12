@@ -5,6 +5,7 @@ import { PgClientService } from 'src/pg-client.service';
 
 @Module({
   controllers: [UsersController],
-  providers: [UsersService, PgClientService]
+  providers: [UsersService, PgClientService],
+  exports: [UsersService]
 })
 export class UsersModule {}
