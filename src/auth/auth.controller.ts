@@ -1,4 +1,4 @@
-import { Body, Controller, HttpStatus, Post, Req, Res, UseGuards } from '@nestjs/common';
+import { Body, Controller, HttpStatus, Post, Req, Res, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
 import { Response } from 'express';
 import { TokensService } from 'src/tokens/tokens.service';
 import { CreateUserDto } from 'src/users/dto/create-user.dto';
@@ -18,6 +18,7 @@ export class AuthController {
     ) { }
 
     @Post('signup')
+    @UsePipes(new ValidationPipe({ transform: true, whitelist: true }))
     async signup(@Body() createUserDto: CreateUserDto, @Res() res: Response) {
         const { id, email } = await this.usersService.create(createUserDto);
         const { accessToken, refreshToken } = await this.authService.generateTokens({ sub: id, email });
