@@ -1,0 +1,1 @@
+export const CREATE_USER = 'INSERT INTO "User" ("firstName", "lastName", age, email, password) VALUES ($1, $2, $3, $4, $5) RETURNING *';
