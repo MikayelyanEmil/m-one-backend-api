@@ -14,7 +14,7 @@ export class AuthController {
     @Post('signup')
     async signup(@Body() createUserDto: CreateUserDto, @Res() res: Response) {
         const { id, email } = await this.usersService.create(createUserDto);
-        const { refreshToken } = await this.tokenService.create({userId: id, refreshToken: 'dopeokp'});
+        const { refreshToken } = await this.tokenService.createOrUpdate({userId: id, refreshToken: 'dopeokp'});
         res.status(HttpStatus.CREATED).json({ id, email, refreshToken });
     }
 }
