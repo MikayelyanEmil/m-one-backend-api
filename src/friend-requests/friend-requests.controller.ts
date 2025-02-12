@@ -1,4 +1,4 @@
-import { Body, Controller, HttpStatus, Post, Req, Res, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Get, HttpStatus, Post, Req, Res, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
 import { JwtAccessGuard } from 'src/auth/guards/jwt-access.guard';
 import { FriendRequestsService } from './friend-requests.service';
 import { Response } from 'express';
@@ -13,6 +13,13 @@ export class FriendRequestsController {
     constructor(
         private friendRequestService: FriendRequestsService
     ) { }
+
+    @Get('pending')
+    async getPending(@Req() req: AuthenticatedRequest) {
+        const requests = await this.friendRequestService.getPending(req.user.sub);
+        console.log(requests);
+        return requests;
+    }
 
     @Post('create') // send friend request
     @UsePipes(new ValidationPipe({ transform: true, whitelist: true })) // validates receiverId to be UUID

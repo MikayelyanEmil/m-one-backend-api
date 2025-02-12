@@ -13,7 +13,7 @@ export class FriendRequestsService {
 
     async getPending(userId: string): Promise<FriendRequest[]> {
         const response = await this.pgClient.query(GET_PENDING_REQUESTS, [userId]);
-        return response.rows[0];
+        return response.rows;
     }
 
     async create(createFriendRequestDto: createFriendRequestDto): Promise<FriendRequest> {
