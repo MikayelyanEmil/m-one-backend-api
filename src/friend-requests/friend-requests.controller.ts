@@ -17,7 +17,6 @@ export class FriendRequestsController {
     @Get('pending')
     async getPending(@Req() req: AuthenticatedRequest) {
         const requests = await this.friendRequestService.getPending(req.user.sub);
-        console.log(requests);
         return requests;
     }
 

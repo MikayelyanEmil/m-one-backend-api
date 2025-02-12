@@ -4,7 +4,7 @@ export class CreateUserDto {
     @MaxLength(30, { message: 'Please enter your valid name under 30 characters.' })
     firstName: string;
 
-    @MaxLength(30, { message: 'Please enter your valid name under 30 characters.' })
+    @MaxLength(30, { message: 'Please enter your valid surname under 30 characters.' })
     lastName: string;
     
     @IsInt()
